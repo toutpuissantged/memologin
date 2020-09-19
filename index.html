@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="self-responsif.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css.map">
+    <link rel="stylesheet" href="insc.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo</title>
+</head>
+<header>
+    <h1 id="titre">bienvenu sur memo</h1>
+</header>
+<body>
+    <div id="cont1">
+        <div class="btn-join " >
+            <button class="btn-join-1 btn" v-bind:class="{btnUp:kep,btnDown:!kep}" id="btn-join-1" v-on:click="logIn">sign in</button>
+            <button class="btn-join-2 btn" v-bind:class="{btnUp:kep3,btnDown:!kep3}" v-on:click="logUp">sign up</button> 
+        </div>
+        <div class="forma"> 
+            <div  v-if="sign" >
+                <form action="connexion" method="post" >
+                    <h2 class="p-from-titre"> sign-in</h2>
+                    <div id="bar-1"></div>
+                    <table id='table'>
+                        <tr class="trd"><div>
+                            <td><label for=""> username</label><p class="bar-st"></p></td><br>
+                            <td><input type="text" class="p-form2 input" placeholder="username" id="username" name="username" v-on:input="typing" v-model="frams">
+                            <p id="logerror">{{errorUserMessage}}</p></td>   
+                        </div></tr>
+                        <tr class="trd"><div>
+                            <td><label for="password"> password</label><p class="bar-st"></p></td>
+                            <td><input type="password" class="input p-form2" placeholder="password" name="password" id="password" v-on:input="typing2" v-model="frams3">
+                            <p id="logerror">{{errorPassMessage}}</p></td>
+                        </div></tr>
+                        <tr class="trd">
+                            <td></td>
+                            <td><input type="submit" value="valider" class="p-btn6 " v-on:click.prevent="submit"></td>
+                        </tr>
+                    </table></form>
+            </div>    
+            <div  v-else-if="!sign">
+                <form action="creation" method="post" >
+                    <h2 class="p-from-titre"> sign-up</h2>
+                    <div id="bar-1"></div>
+                    <table id="table">
+                        <tr class="trd"><div>
+                            <td><label for=""> username</label><p class="bar-st"></p></td>
+                            <td><input type="text" class="p-form2 input" placeholder="username" id="username" name="username" v-on:input="typing" v-model="frams6">
+                            <p id="logerror">{{errorUserMessage2}}</p></td>
+                        </div></tr>
+                        <tr class="trd"><div>
+                            <td><label for=""> email</label><p class="bar-st"></p></td>
+                            <td><input type="email" class="input p-form2" placeholder="email" name="email" id="email" v-model="frams9">
+                            <p id="logerror">{{errorEmailMessage}}</p></td>
+                        </div></tr>
+                        <tr class="trd"><div>
+                        <td><label for=""> password</label><p class="bar-st"></p></td>
+                        <td><input type="password" class="input p-form2" placeholder="password" name="password" id="password" v-on:input="typing2" v-model="frams7">
+                        <p id="logerror">{{errorPassMessage2}}</p></td>
+                    </div></tr>
+                    <tr class="trd">
+                        <td><input type="checkbox" name="check"  id="check" v-model='check' v-on:click="checko">
+                        <p>{{rep}} les conditions d'utilisations</p></td>
+                        <td><input type="submit" value="valider" class="p-btn6" v-on:click.prevent="submit"></td>
+                    </tr></table>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script  defer src="vue.js"></script>
+<script defer src="login.js"></script>
+</html>
